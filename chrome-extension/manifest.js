@@ -2,10 +2,6 @@ import fs from 'node:fs';
 
 const packageJson = JSON.parse(fs.readFileSync('../package.json', 'utf8'));
 
-/**
- * After changing, please reload the extension at `chrome://extensions`
- * @type {chrome.runtime.ManifestV3}
- */
 const manifest = {
   manifest_version: 3,
   default_locale: 'en',
