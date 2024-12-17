@@ -29,7 +29,6 @@
     "@extension/vite-config": "workspace:*",
     "cross-env": "^7.0.3",
     "daisyui": "^4.12.22",
-    "eslint-plugin-tailwindcss": "^3.17.4",
     "postcss-load-config": "^6.0.1"
   },
   "postcss": {
