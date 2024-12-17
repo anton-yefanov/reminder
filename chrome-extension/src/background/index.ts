@@ -1,21 +1,15 @@
 import 'webextension-polyfill';
-import { reminderStorage } from '../../../packages/storage/lib/impl/remindersStorage';
+import { reminderStorage } from '@extension/storage/lib/impl/remindersStorage';
 
-// Background script logic
-console.log('Background script loaded.');
-
-// Function to check reminders and trigger notifications
 async function checkReminders() {
   const reminders = await reminderStorage.get(); // Fetch reminders from storage
   const now = new Date();
 
   for (const reminder of reminders) {
     const reminderTime = new Date(reminder.time);
+    const oneMinute = 60000;
     // Check if the reminder time has passed and it's recent (within a 1 minute window)
-    if (
-      reminderTime <= now &&
-      now.getTime() - reminderTime.getTime() <= 60000 // 1 minute tolerance
-    ) {
+    if (reminderTime <= now && now.getTime() - reminderTime.getTime() <= oneMinute) {
       // Trigger notification
       chrome.notifications.create(
         `reminder-${reminder.id}`, // Unique ID for the notification
@@ -33,16 +27,12 @@ async function checkReminders() {
   }
 }
 
-// Set up periodic alarm to check reminders
 chrome.alarms.create('checkReminders', { periodInMinutes: 0.5 });
 
-// Listen for the alarm event
 chrome.alarms.onAlarm.addListener(alarm => {
   if (alarm.name === 'checkReminders') {
-    console.log('Checking reminders...');
     checkReminders();
   }
 });
 
-// Optional: Check immediately on startup
 checkReminders();
