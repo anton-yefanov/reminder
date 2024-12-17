@@ -19,16 +19,18 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@extension/content-runtime-script": "workspace:*",
     "@extension/shared": "workspace:*",
-    "@extension/storage": "workspace:*",
-    "@extension/content-runtime-script": "workspace:*"
+    "@extension/storage": "workspace:*"
   },
   "devDependencies": {
     "@extension/tailwindcss-config": "workspace:*",
     "@extension/tsconfig": "workspace:*",
     "@extension/vite-config": "workspace:*",
-    "postcss-load-config": "^6.0.1",
-    "cross-env": "^7.0.3"
+    "cross-env": "^7.0.3",
+    "daisyui": "^4.12.22",
+    "eslint-plugin-tailwindcss": "^3.17.4",
+    "postcss-load-config": "^6.0.1"
   },
   "postcss": {
     "plugins": {

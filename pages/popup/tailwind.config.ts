@@ -4,4 +4,5 @@ import type { Config } from 'tailwindcss/types/config';
 export default {
   ...baseConfig,
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  plugins: [require('daisyui')],
 } as Config;
