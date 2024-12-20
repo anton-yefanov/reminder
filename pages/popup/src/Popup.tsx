@@ -1,6 +1,7 @@
 import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
 import { useState } from 'react';
 import { reminderStorage } from '../../../packages/storage/lib/impl/remindersStorage';
+import { Reminder } from '@src/components/Reminder';
 
 const Popup = () => {
   const [title, setTitle] = useState('');
@@ -31,7 +32,7 @@ const Popup = () => {
   };
 
   return (
-    <div className="flex flex-col w-64 p-4 bg-white rounded-lg shadow-md">
+    <div className="flex flex-col p-4 bg-white rounded-lg shadow-md">
       <h1 className="text-lg font-semibold mb-4 text-center">Add Reminder</h1>
 
       {/* Title Input */}
@@ -63,8 +64,10 @@ const Popup = () => {
       <button
         onClick={handleAddReminder}
         className="btn bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition-colors mb-4">
-        Add Reminder
+        Add Reminder 1
       </button>
+
+      <Reminder />
 
       {/* Reminders List */}
       <div>
